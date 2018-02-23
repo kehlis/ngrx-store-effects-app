@@ -8,12 +8,11 @@ import * as toppingsActions from '../actions/toppings.action';
 import * as fromServices from '../../services/toppings.service';
 
 @Injectable()
-
 export class ToppingsEffects {
     constructor(private actions$: Actions, private toppingsService: fromServices.ToppingsService) {}
 
     @Effect()
-    toppingsActions$ = this.actions$.ofType(toppingsActions.LOAD_TOPPINGS)
+    loadToppings$ = this.actions$.ofType(toppingsActions.LOAD_TOPPINGS)
         .pipe(
             switchMap(() => {
                 return this.toppingsService.getToppings().pipe(
